@@ -65,7 +65,6 @@ public class MediaServiceImpl extends ServiceImpl<MediaMapper, Media> implements
         Long courseId = sectionInfo.getCourseId();
         // 2.查询用户课程表，是否是购买过的课程
         Long lessonId = learningClient.isLessonValid(courseId);
-
         if(lessonId != null){
             // 2.1.是，查询媒资信息，直接获取签名
             Media media = getById(sectionInfo.getMediaId());

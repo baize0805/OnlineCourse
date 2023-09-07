@@ -1,5 +1,6 @@
 package com.tianji.trade.mapper;
 
+import com.tianji.api.client.learning.LearningClient;
 import com.tianji.trade.domain.po.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,15 @@ class OrderMapperTest {
     @Autowired
     private OrderMapper orderMapper;
 
+    @Autowired
+    private LearningClient client;
+
     @Test
     void getById() {
         Order order = orderMapper.getById(1L);
         System.out.println("order = " + order);
     }
+
+
+
 }
