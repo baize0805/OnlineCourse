@@ -6,6 +6,7 @@ import com.tianji.learning.enums.LessonStatus;
 import com.tianji.learning.service.ILearningLessonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ public class LessonStatusCheckJob {
 
     private final ILearningLessonService lessonService;
 
-    // @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 0 * * * ?")
     public void lessonStatusCheck(){
         // 1.查询状态为未过期课程
         List<LearningLesson> list = lessonService.list(Wrappers.<LearningLesson>lambdaQuery()

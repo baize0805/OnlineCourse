@@ -44,6 +44,17 @@ public class PageDTO<T> {
         }
         return new PageDTO<>(page.getTotal(), page.getPages(), page.getRecords());
     }
+   /*  public static <T,R> PageDTO<T> of(Page<com.tianji.promotion.domain.po.Coupon> page, com.tianji.promotion.domain.vo.CouponPageVO mapper) {
+        if(page == null){
+            return new PageDTO<>();
+        }
+        if (CollUtils.isEmpty(page.getRecords())) {
+            return empty(page);
+        }
+        return new PageDTO<>(page.getTotal(), page.getPages(),
+                page.getRecords().stream().map(mapper).collect(Collectors.toList()));
+    } */
+
     public static <T,R> PageDTO<T> of(Page<R> page, Function<R, T> mapper) {
         if(page == null){
             return new PageDTO<>();
@@ -54,6 +65,7 @@ public class PageDTO<T> {
         return new PageDTO<>(page.getTotal(), page.getPages(),
                 page.getRecords().stream().map(mapper).collect(Collectors.toList()));
     }
+
     public static <T> PageDTO<T> of(Page<?> page, List<T> list) {
         return new PageDTO<>(page.getTotal(), page.getPages(), list);
     }
